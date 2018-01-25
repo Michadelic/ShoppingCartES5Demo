@@ -33,12 +33,12 @@ sap.ui.define([
 			var oWelcomeCarousel = this.byId("welcomeCarousel");
 			var iRandomIndex = Math.floor(Math.abs(Math.random()) * oWelcomeCarousel.getPages().length);
 			oWelcomeCarousel.setActivePage(oWelcomeCarousel.getPages()[iRandomIndex]);
-			
-			console.log("onInit");	
+
+			console.log("onInit");
 		},
 
 		onBeforeRendering: function () {
-			console.log("onBefore");	
+			console.log("onBefore");
 		},
 
 		/**
@@ -46,28 +46,29 @@ sap.ui.define([
 		 */
 		onAfterRendering: function () {
 			this.onCarouselPageChanged();
-			console.log("onAfterRendering");	
+			console.log("onAfterRendering");
 		},
 
 		onExit: function () {
-			console.log("onExit");	
+			console.log("onExit");
 		},
-		
+
 		destroy: function () {
-			console.log("destroy");	
+			console.log("destroy");
 		},
 
 		_onRouteMatched: function (oEvent) {
 			// we do not need to call this function if the url hash refers to product or cart product
 			if (oEvent.getParameter("name") !== "product" && oEvent.getParameter("name") !== "cartProduct") {
-					var oModel = this.getModel();
-						oModel.read("/ProductSet", {
-							success: function (oData) {
-								this.getModel("view").setProperty("/Promoted", oData.results);
-									this._selectPromotedItems();
-							}.bind(this)
-						});
-				}
+				var oModel = this.getModel();
+				oModel.read("/ProductSet", {
+					success: function (oData) {
+						// store all products in the promoted array
+						this.getModel("view").setProperty("/Promoted", oData.results);
+						this._selectPromotedItems();
+					}.bind(this)
+				});
+			}
 		},
 
 		/**
@@ -110,7 +111,7 @@ sap.ui.define([
 		 * @param {sap.ui.base.Event} oEvent the press event of the image
 		 */
 		onPicturePress: function (oEvent) {
-			var sPath = "view>" + oEvent.getSource().getBindingContext("view").getPath() + "/Product";
+			var sPath = "view>" + oEvent.getSource().getBindingContext("view").getPath();
 			this.byId("lightBox").bindElement({path: sPath});
 			this.byId("lightBox").open();
 		},
@@ -127,12 +128,12 @@ sap.ui.define([
 		},
 
 		/**
-		 * Select two random elements from the promoted products array
+		 * Select fixed products
 		 * @private
 		 */
 		_selectPromotedItems: function () {
 			var aProducts = this.getView().getModel("view").getProperty("/Promoted");
-			this.getModel("view").setProperty("/Promoted", [aProducts[0], aProducts[62]]);
+			this.getModel("view").setProperty("/Promoted", [aProducts[1], aProducts[62]]);
 			this.getModel("view").setProperty("/Viewed", [aProducts[114], aProducts[102], aProducts[96], aProducts[119]]);
 			this.getModel("view").setProperty("/Favorite", [aProducts[109], aProducts[95], aProducts[97], aProducts[18]]);
 		}

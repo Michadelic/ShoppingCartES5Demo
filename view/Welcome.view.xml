@@ -324,7 +324,7 @@
 				<imageContent>
 					<LightBoxItem
 						imageSrc="{
-							path: 'view>PictureUrl',
+							path: 'view>ProductID',
 							formatter : '.formatter.pictureUrl'
 						}"
 						title="{view>Name}"/>

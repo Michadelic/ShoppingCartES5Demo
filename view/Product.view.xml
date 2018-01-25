@@ -45,7 +45,7 @@
 						text="{Description}" />
 					<ObjectAttribute
 						title="{i18n>productWeightAttributeText}"
-						text="{Weight} {WeightUnit}"/>
+						text="{WeightMeasure} {WeightUnit}"/>
 					<ObjectAttribute
 						title="{i18n>productMeasuresAttributeText}"
 						text="{Width} {DimUnit}, {Depth} {DimUnit}, {Height} {DimUnit}"/>
