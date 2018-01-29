@@ -36,7 +36,7 @@ https://github.com/Michadelic/ShoppingCartES5Demo.git
 ```
 
 
-7. Open the app in preview mode by pressing the "Run" button
+3. Open the app in preview mode by pressing the "Run" button
 
 Choose on of the following entry points:
 
