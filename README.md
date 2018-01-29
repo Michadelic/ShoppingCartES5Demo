@@ -20,7 +20,12 @@ It can be used for demostrations and education as needed.
 
 ## Running the project in SAP Web IDE
 
-1. Open the [SAP Web IDE Full-Stack](https://webide-xxxtrial.dispatcher.hanatrial.ondemand.com/) (replace the xxx with your account number)
+1. Open the [SAP Web IDE Full-Stack](https://webidecp-<youraccountname>trial.dispatcher.hanatrial.ondemand.com/). If the above URL didn't work, you have to activate the Web IDE full stack service:
+  1. Go to [SAP Cloud Cockpit](https://account.hanatrial.ondemand.com/cockpit#/home/overview).
+  2. At the bottom of the page, select the button with the text "trail"
+  3. click on your account number
+  4. Under the services at the left side, search for Web IDE Full-Stack and enable it.
+
 2. Clone this repository by selected "File > Git > Clone Repository" and inserting the following URL:
 ```
 https://github.com/Michadelic/ShoppingCartES5Demo.git
