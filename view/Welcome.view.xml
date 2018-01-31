@@ -141,6 +141,7 @@
 										height="50%"/>
 								</FlexBox>
 								<Button
+									class="myFancyButton"
 									tooltip="{i18n>addToCart}"
 									type="Emphasized"
 									press="onAddButtonPress"
@@ -320,7 +321,7 @@
 				</l:BlockLayoutRow>
 			</l:BlockLayout>
 			<!-- don't do this at home, just for illustration -->
-			<!--<Panel
+			<!-- <Panel
 				headerText="Layout issues">
 				<Page title="Wohoo a page!">
 					<content>
@@ -345,14 +346,14 @@
 						</List>
 					</content>
 				</Page>
-			</Panel>-->
+			</Panel> -->
 		</content>
 		<dependents>
 			<LightBox id="lightBox">
 				<imageContent>
 					<LightBoxItem
 						imageSrc="{
-							path: 'view>PictureUrl',
+							path: 'view>ProductID',
 							formatter : '.formatter.pictureUrl'
 						}"
 						title="{view>Name}"/>

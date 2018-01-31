@@ -33,12 +33,12 @@ sap.ui.define([
 			var oWelcomeCarousel = this.byId("welcomeCarousel");
 			var iRandomIndex = Math.floor(Math.abs(Math.random()) * oWelcomeCarousel.getPages().length);
 			oWelcomeCarousel.setActivePage(oWelcomeCarousel.getPages()[iRandomIndex]);
-			
-			console.log("onInit");	
+
+			console.log("onInit");
 		},
 
 		onBeforeRendering: function () {
-			console.log("onBefore");	
+			console.log("onBefore");
 		},
 
 		/**
@@ -47,10 +47,10 @@ sap.ui.define([
 		onAfterRendering: function () {
 			this.onCarouselPageChanged();
 			console.log("onAfterRendering");
+
 			/* don't do this at home, just for illustration */
-			/*
 			// this will rerender the view indefinitely
-			if (!this._iQuit || this._iQuit < 5) {
+			/*if (!this._iQuit || this._iQuit < 5) {
 				if (!this._iQuit) {
 					this._iQuit = 0;
 				}
@@ -61,8 +61,8 @@ sap.ui.define([
 					textAlign: "Center"
 				}), 0, false);
 				this._iQuit ++;
-			}
-			*/
+			}*/
+
 			/* don't do this at home, just for illustration */
 			/*
 			// this will rerender the page indefinitely
@@ -85,11 +85,11 @@ sap.ui.define([
 		},
 
 		onExit: function () {
-			console.log("onExit");	
+			console.log("onExit");
 		},
-		
+
 		destroy: function () {
-			console.log("destroy");	
+			console.log("destroy");
 		},
 
 		_onRouteMatched: function (oEvent) {
@@ -103,13 +103,13 @@ sap.ui.define([
 			
 			/* don't do this at home, just for illustration */
 			// this won't work as the binding won't be updated properly
-			//var oTitle = this.getView().byId("title");
-			//oTitle.mProperties["text"] = "A new title";
+			var oTitle = this.getView().byId("title");
+			/* oTitle.mProperties["text"] = "A new title"; */
 			// this won't work as the title is bound
-			//oTitle.setTitle("A new title");
+			/*oTitle.setTitle("A new title");*/
 			// this works: unbind and set
-			//oTitle.unbindProperty("title");
-			//oTitle.setText("A new title");
+			/*oTitle.unbindProperty("title");
+			oTitle.setText("A new title");*/
 
 			// we do not need to call this function if the url hash refers to product or cart product			
 			if (oEvent.getParameter("name") !== "product" && oEvent.getParameter("name") !== "cartProduct") {
@@ -163,7 +163,7 @@ sap.ui.define([
 		 * @param {sap.ui.base.Event} oEvent the press event of the image
 		 */
 		onPicturePress: function (oEvent) {
-			var sPath = "view>" + oEvent.getSource().getBindingContext("view").getPath() + "/Product";
+			var sPath = "view>" + oEvent.getSource().getBindingContext("view").getPath();
 			this.byId("lightBox").bindElement({path: sPath});
 			this.byId("lightBox").open();
 		},
@@ -180,12 +180,12 @@ sap.ui.define([
 		},
 
 		/**
-		 * Select two random elements from the promoted products array
+		 * Select fixed products
 		 * @private
 		 */
 		_selectPromotedItems: function () {
 			var aProducts = this.getView().getModel("view").getProperty("/Promoted");
-			this.getModel("view").setProperty("/Promoted", [aProducts[0], aProducts[62]]);
+			this.getModel("view").setProperty("/Promoted", [aProducts[1], aProducts[62]]);
 			this.getModel("view").setProperty("/Viewed", [aProducts[114], aProducts[102], aProducts[96], aProducts[119]]);
 			this.getModel("view").setProperty("/Favorite", [aProducts[109], aProducts[95], aProducts[97], aProducts[18]]);
 		}
