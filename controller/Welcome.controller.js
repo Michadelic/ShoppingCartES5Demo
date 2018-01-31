@@ -46,7 +46,42 @@ sap.ui.define([
 		 */
 		onAfterRendering: function () {
 			this.onCarouselPageChanged();
-			console.log("onAfterRendering");	
+			console.log("onAfterRendering");
+			/* don't do this at home, just for illustration */
+			/*
+			// this will rerender the view indefinitely
+			if (!this._iQuit || this._iQuit < 5) {
+				if (!this._iQuit) {
+					this._iQuit = 0;
+				}
+				this.getView().insertAggregation("content", new sap.m.Title({
+					text: "Hello, i am a really important rendered by onAfterRendering",
+					titleStyle: "H1",
+					width: "100%",
+					textAlign: "Center"
+				}), 0, false);
+				this._iQuit ++;
+			}
+			*/
+			/* don't do this at home, just for illustration */
+			/*
+			// this will rerender the page indefinitely
+			this.getView().getContent()[0].addEventDelegate({
+				onAfterRendering: function () {
+					if (!this._iQuit || this._iQuit < 5) {
+						if (!this._iQuit) {
+							this._iQuit = 0;
+						}
+						this.getView().getContent()[0].addContent(new sap.m.Title({
+							text: "Hello, i am a really important rendered by onAfterRendering",
+							titleStyle: "H1",
+							width: "100%",
+							textAlign: "Center"
+						}), 0);
+						this._iQuit ++;
+					}
+				}.bind(this)
+			});*/
 		},
 
 		onExit: function () {
@@ -58,16 +93,34 @@ sap.ui.define([
 		},
 
 		_onRouteMatched: function (oEvent) {
-			// we do not need to call this function if the url hash refers to product or cart product
+			/* don't do this at home, just for illustration */
+			/*this.getView().getContent()[0].addContent(new sap.m.Title({
+				text: "Hello, the current time is: " + new Date(),
+				titleStyle: "H1",
+				width: "100%",
+				textAlign: "Center"
+			}), 0);*/
+			
+			/* don't do this at home, just for illustration */
+			// this won't work as the binding won't be updated properly
+			//var oTitle = this.getView().byId("title");
+			//oTitle.mProperties["text"] = "A new title";
+			// this won't work as the title is bound
+			//oTitle.setTitle("A new title");
+			// this works: unbind and set
+			//oTitle.unbindProperty("title");
+			//oTitle.setText("A new title");
+
+			// we do not need to call this function if the url hash refers to product or cart product			
 			if (oEvent.getParameter("name") !== "product" && oEvent.getParameter("name") !== "cartProduct") {
-					var oModel = this.getModel();
-						oModel.read("/ProductSet", {
-							success: function (oData) {
-								this.getModel("view").setProperty("/Promoted", oData.results);
-									this._selectPromotedItems();
-							}.bind(this)
-						});
-				}
+				var oModel = this.getModel();
+					oModel.read("/ProductSet", {
+						success: function (oData) {
+							this.getModel("view").setProperty("/Promoted", oData.results);
+								this._selectPromotedItems();
+						}.bind(this)
+					});
+			}
 		},
 
 		/**

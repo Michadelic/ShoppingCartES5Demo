@@ -18,6 +18,7 @@
 				</contentLeft>
 				<contentMiddle>
 					<Title
+						id="title"
 						tooltip="{i18n>welcomeDescription}"
 						text="{i18n>welcomeHeadline}"/>
 				</contentMiddle>
@@ -318,6 +319,33 @@
 					</l:content>
 				</l:BlockLayoutRow>
 			</l:BlockLayout>
+			<!-- don't do this at home, just for illustration -->
+			<!--<Panel
+				headerText="Layout issues">
+				<Page title="Wohoo a page!">
+					<content>
+						<Title width="100%" text="Hello!"></Title>
+						<List
+							id="ProductList"
+							mode="MultiSelect"
+							includeItemInSelection="true">
+						<headerToolbar>
+							<Toolbar>
+								<content>
+									<Title text="And a List..." level="H2" />
+								</content>
+							</Toolbar>
+						</headerToolbar>
+						<StandardListItem
+							title="Product ABC}"
+							description="This is a fancy product"
+							icon="sap-icon://nutrition-activity"
+							iconDensityAware="false"
+							iconInset="false" />
+						</List>
+					</content>
+				</Page>
+			</Panel>-->
 		</content>
 		<dependents>
 			<LightBox id="lightBox">
